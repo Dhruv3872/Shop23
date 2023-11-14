@@ -64,3 +64,11 @@ yarn-error.log
 
 # testing
 /coverage
+
+# other:
+/references
+# The above foler is created to keep the references related to the project handy, but it will
+# increase the app bundle size. We will need to make some other arrangement to serve the purpose.
+/temporary.txt
+# We will store temporary stuff that's in our mind for development here. Anything that is relevant
+# to the project but can't be worked upon at that moment may find itself temporarily stored here. 
