@@ -1,5 +1,5 @@
 import React from 'react';
-import {} from 'react-native';
+import {StatusBar, StyleSheet} from 'react-native';
 
 //react-navigation:
 import {NavigationContainer} from '@react-navigation/native';
@@ -18,13 +18,13 @@ function App() {
   const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
+      <StatusBar barStyle="dark-content" backgroundColor="white" />
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
             let icon;
-            //console.log(route.name);
             if (route.name === 'Home') {
               iconName = focused ? 'home' : 'home-outline';
             } else if (route.name === 'Shop') {
@@ -36,11 +36,10 @@ function App() {
             } else if (route.name === 'Profile') {
               iconName = focused ? 'person-circle' : 'person-circle-outline';
             }
-            console.log(iconName);
             icon = <Ionicons name={iconName} size={size} color={color} />;
             return icon;
           },
-          headerShown: true,
+          headerShown: false,
         })}>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Shop" component={ShopScreen} />
@@ -52,4 +51,5 @@ function App() {
   );
 }
 
+const styles = StyleSheet.create({});
 export default App;

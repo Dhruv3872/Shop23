@@ -3,10 +3,12 @@ import React from 'react';
 
 export default function FavouritesScreen() {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>FavouritesScreen</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {flex: 1, backgroundColor: 'white'},
+});
