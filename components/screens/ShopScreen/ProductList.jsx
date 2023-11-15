@@ -25,9 +25,14 @@ export default function ProductList() {
       <FlatList
         data={processedResponse}
         renderItem={product => {
-          console.log(product);
-          return <ProductCard title={product['item']['title']} />;
+          return (
+            <ProductCard
+              title={product['item']['title']}
+              uri={product['item']['images'][0]}
+            />
+          );
         }}
+        numColumns={2}
       />
       {/* processedResponse is a constant we will use to render relevant items 
       based on the product filter and sort choices made by the user. */}

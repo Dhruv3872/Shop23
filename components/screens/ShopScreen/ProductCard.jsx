@@ -4,19 +4,41 @@ import React from 'react';
 //Third-party:
 import FastImage from 'react-native-fast-image';
 
-export default function ProductCard({title}) {
+export default function ProductCard({title, uri}) {
   return (
-    <View>
+    <View style={styles.container}>
       <FastImage
-        style={{width: 100, height: 100}}
+        style={styles.productImage}
         source={{
-          uri: 'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Image.png',
+          uri: uri,
         }}
-        resizeMode={FastImage.resizeMode.contain}
+        resizeMode={FastImage.resizeMode.cover}
       />
-      <Text>{title}</Text>
+      <Text style={styles.title}>{title}</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 10,
+    marginVertical: 10,
+    justifyContent: 'center',
+  },
+  title: {
+    width: 175,
+    fontSize: 24,
+    fontFamily: 'normal',
+    fontWeight: '900',
+    textAlign: 'center',
+  },
+  productImage: {
+    width: 175,
+    height: 200,
+    borderRadius: 16,
+    marginBottom: 8,
+  },
+  productImageContainer: {
+    flex: 1,
+  },
+});
