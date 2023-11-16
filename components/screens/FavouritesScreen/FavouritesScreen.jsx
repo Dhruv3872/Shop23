@@ -4,7 +4,7 @@ import React from 'react';
 export default function FavouritesScreen() {
   return (
     <View style={styles.container}>
-      <Text>FavouritesScreen</Text>
+      <Text style={{color: 'black'}}>FavouritesScreen</Text>
     </View>
   );
 }

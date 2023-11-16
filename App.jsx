@@ -20,6 +20,7 @@ function App() {
     <NavigationContainer>
       <StatusBar barStyle="dark-content" backgroundColor="white" />
       <Tab.Navigator
+        sceneContainerStyle={styles.tabScreens}
         initialRouteName="Home"
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
@@ -51,5 +52,10 @@ function App() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabScreens: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
 export default App;

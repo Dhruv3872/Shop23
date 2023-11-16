@@ -4,7 +4,7 @@ import React from 'react';
 export default function BagScreen() {
   return (
     <View style={styles.container}>
-      <Text>BagScreen</Text>
+      <Text style={{color: 'black'}}>BagScreen</Text>
     </View>
   );
 }

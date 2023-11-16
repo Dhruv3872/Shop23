@@ -23,6 +23,7 @@ export default function ProductList() {
   return (
     <View style={styles.container} onLayout={getProductList}>
       <FlatList
+        columnWrapperStyle={styles.productList}
         data={processedResponse}
         renderItem={product => {
           return (
@@ -42,6 +43,12 @@ export default function ProductList() {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // borderColor: 'orange',
+    // borderWidth: 1,
+  },
+  productList: {
+    justifyContent: 'center',
   },
 });

@@ -1,4 +1,11 @@
 {
   "name": "Shop23",
-  "displayName": "Shop23"
+  "displayName": "Shop23",
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "e71f69fc-b29c-4531-b5ff-2d3d09ecd31f"
+      }
+    }
+  }
 }

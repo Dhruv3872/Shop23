@@ -4,7 +4,7 @@ import React from 'react';
 export default function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <Text>ProfileScreen</Text>
+      <Text style={{color: 'black'}}>ProfileScreen</Text>
     </View>
   );
 }
