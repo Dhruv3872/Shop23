@@ -29,7 +29,9 @@ export default function ProductList() {
           return (
             <ProductCard
               title={product['item']['title']}
-              uri={product['item']['images'][0]}
+              uri={product['item']['thumbnail']}
+              price={product['item']['price']}
+              discountPercentage={product['item']['discountPercentage']}
             />
           );
         }}

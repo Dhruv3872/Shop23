@@ -3,10 +3,12 @@ import React from 'react';
 
 //ours:
 import ProductList from './ProductList';
+import SortDropdown from './SortDropdown';
 
 export default function ShopScreen() {
   return (
     <View style={styles.container}>
+      <SortDropdown />
       <ProductList />
     </View>
   );

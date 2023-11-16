@@ -1,0 +1,24 @@
+We will use this file to put information we think of at the time of 
+ thinking of adding something new to our app.
+Navigation: 
+    Icons:
+        Ionics:
+            Home: home-outline, home
+            Shop: cart-outline, cart
+            Bag: bag-handle-outline, bag-handle
+            Favourites: heart-outline, heart
+            Profile: person-circle-outline, person-circle
+Shop:
+    Sort:
+        Price: Low to High
+        Price: High to Low
+        Avg. Customer Review
+        Best discount
+    Filter:
+        Under $500
+        $500 - $1000
+        $1000 - $1500
+        Discount > 10%
+        Discount > 15%
+        Rating > 4.5        
+        Rating > 4

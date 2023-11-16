@@ -1,10 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 
 //Third-party:
 import FastImage from 'react-native-fast-image';
 
-export default function ProductCard({title, uri}) {
+//ours:
+import ProductInfo from './ProductInfo';
+
+export default function ProductCard({title, uri, price, discountPercentage}) {
   return (
     <View style={styles.container}>
       <FastImage
@@ -14,7 +17,11 @@ export default function ProductCard({title, uri}) {
         }}
         resizeMode={FastImage.resizeMode.cover}
       />
-      <Text style={styles.title}>{title}</Text>
+      <ProductInfo
+        title={title}
+        price={price}
+        discountPercentage={discountPercentage}
+      />
     </View>
   );
 }
@@ -26,16 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     // borderColor: 'black',
-    // borderWidth: 1,
-  },
-  title: {
-    color: 'black',
-    width: 175,
-    fontSize: 24,
-    fontFamily: 'normal',
-    fontWeight: '900',
-    textAlign: 'center',
-    // borderColor: 'blue',
     // borderWidth: 1,
   },
   productImage: {
