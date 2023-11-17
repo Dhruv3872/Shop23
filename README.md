@@ -7,10 +7,12 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-In ShopScreen component:
-
-1. Added Dropdown menu for filtering products based on their categories.
-1. Added logic for the Filter dropdown to work.
+1. In ShopScreen component:
+   1. Corrected a bug that caused only the first product to load on  
+      ShopScreen when no Filter is chosen. Now all the items will be  
+      shown.
+1. Incremented the package version in package.json. We will try to  
+   make it a habit to do so every time right before building.
 
 ### Changes in mind to be introduced in the near-future commits:
 
