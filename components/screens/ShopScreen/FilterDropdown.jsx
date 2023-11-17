@@ -1,5 +1,5 @@
 /* A component made to provide the user with the functionality of
-sorting their product list view. */
+filtering their product list view based on the product category. */
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 
@@ -10,19 +10,45 @@ import {Dropdown} from 'react-native-element-dropdown';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const data = [
-  {label: 'Price: Low to High', value: '1'},
-  {label: 'Price: High to Low', value: '2'},
-  {label: 'Avg. Customer Review', value: '3'},
-  {label: 'Best discount', value: '4'},
+  {label: 'Smartphones', value: 'smartphones'},
+  {label: 'Laptops', value: 'laptops'},
+  {label: 'Fragrances', value: 'fragrances'},
+  {label: 'Skincare', value: 'skincare'},
+  {label: 'Groceries', value: 'groceries'},
+  {label: 'Home-decoration', value: 'home-decoration'},
+  {label: 'Furniture', value: 'furniture'},
+  {label: 'Tops', value: 'tops'},
+  {label: 'Womens dresses', value: 'womens-dresses'},
+  {label: 'Womens shoes', value: 'womens-shoes'},
+  {label: 'Mens shirts', value: 'mens-shirts'},
+  {label: 'Mens shoes', value: 'mens-shoes'},
+  {label: 'Mens watches', value: 'mens-watches'},
+  {label: 'Womens watches', value: 'womens-watches'},
+  {label: 'Womens bags', value: 'womens - bags'},
+  {label: 'Womens jewellery', value: 'womens-jewellery'},
+  {label: 'Sunglasses', value: 'sunglasses'},
+  {label: 'Automotive', value: 'automotive'},
+  {label: 'Motorcycle', value: 'motorcycle'},
+  {label: 'Lighting', value: 'lighting'},
+
+  /* {label: 'Under $500', value: '<500'},
+  {label: '$500 - $1000', value: '500-1000'},
+  {label: '> $1000', value: '>1000'},
+  {label: 'Discount > 10%', value: 'd>10'},
+  {label: 'Discount > 15%', value: 'd>15'},
+  {label: 'Rating > 4.5', value: 'r>4.5'},
+  {label: 'Rating > 4', value: 'r>4'}, */
 ];
 
-export default function SortDropdown() {
+export default function FilterDropdown({passFilterValue}) {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const renderLabel = () => {
     if (value || isFocus) {
       return (
-        <Text style={[styles.label, isFocus && {color: 'blue'}]}>Sort by</Text>
+        <Text style={[styles.label, isFocus && {color: 'blue'}]}>
+          Filter by category
+        </Text>
       );
     }
     return null;
@@ -40,20 +66,22 @@ export default function SortDropdown() {
         maxHeight={300}
         labelField="label"
         valueField="value"
-        placeholder={!isFocus ? 'Select item' : '...'}
+        placeholder={!isFocus ? 'Choose a category' : '...'}
         searchPlaceholder="Search..."
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={item => {
           setValue(item.value);
+          // console.log('value at filterdd: ' + value);
+          passFilterValue(item.value);
           setIsFocus(false);
         }}
         renderLeftIcon={() => (
           <Ionicons
             style={styles.icon}
             color={isFocus ? 'blue' : 'black'}
-            name="swap-vertical-outline"
+            name="filter-outline"
             size={20}
           />
         )}
