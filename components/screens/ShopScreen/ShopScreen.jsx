@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 
 //ours:
 import ProductList from './ProductList';
-import SortDropdown from './SortDropdown';
 import FilterDropdown from './FilterDropdown';
 export default function ShopScreen() {
   const [chosenFilterValue, setChosenFilterValue] = useState('');
@@ -15,9 +14,10 @@ export default function ShopScreen() {
     <View style={styles.container}>
       <View>
         <FilterDropdown passFilterValue={passFilterValue} />
-        <SortDropdown />
       </View>
-      <ProductList filterValue={chosenFilterValue} />
+      <View style={styles.list}>
+        <ProductList filterValue={chosenFilterValue} />
+      </View>
     </View>
   );
 }
@@ -25,5 +25,8 @@ export default function ShopScreen() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+  },
+  list: {
+    marginBottom: 160,
   },
 });

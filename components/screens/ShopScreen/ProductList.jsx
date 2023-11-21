@@ -6,7 +6,6 @@ import axios from 'axios';
 
 export default function ProductList({filterValue}) {
   const [processedResponse, setProcessedResponse] = useState([]);
-  console.log('received filter value at ProductList: ' + filterValue);
   let uri = 'https://dummyjson.com/products/?limit=0';
   if (processedResponse.length === 0) {
     // This is true when the user arrives on ShopScreen screen afresh.
