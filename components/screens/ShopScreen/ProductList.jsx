@@ -4,44 +4,54 @@ import ProductCard from './ProductCard';
 
 import axios from 'axios';
 
-export default function ProductList({filterValue}) {
+//Redux:
+import {useSelector} from 'react-redux';
+import {selectFilter} from '../../../src/features/filterSlice';
+
+export default function ProductList() {
   const [processedResponse, setProcessedResponse] = useState([]);
+  //Redux:
+  const filterValue = useSelector(selectFilter);
   let uri = 'https://dummyjson.com/products/?limit=0';
-  if (processedResponse.length === 0) {
-    // This is true when the user arrives on ShopScreen screen afresh.
-    axios
-      .get(uri)
-      .then(function (response) {
-        if (processedResponse != response['data']['products']) {
-          setProcessedResponse(response['data']['products']);
-        }
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
-  } else if (processedResponse[0]['category'] != filterValue) {
-    /*This condition has to be checked to avoid sending the same request
+  if (filterValue === null) {
+    if (processedResponse.length === 0) {
+      // This is true when the user arrives on ShopScreen screen afresh.
+      axios
+        .get(uri)
+        .then(function (response) {
+          if (processedResponse != response['data']['products']) {
+            setProcessedResponse(response['data']['products']);
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+    }
+  } else {
+    if (processedResponse[0]['category'] != filterValue) {
+      /*This condition has to be checked to avoid sending the same request
     over and over again. */
-    uri =
-      'https://dummyjson.com/products/category/' + filterValue + '/?limit=0';
-    axios
-      .get(uri)
-      .then(function (response) {
-        if (processedResponse != response['data']['products']) {
-          setProcessedResponse(response['data']['products']);
-        }
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
+      uri =
+        'https://dummyjson.com/products/category/' + filterValue + '/?limit=0';
+      axios
+        .get(uri)
+        .then(function (response) {
+          if (processedResponse != response['data']['products']) {
+            setProcessedResponse(response['data']['products']);
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+    }
   }
   return (
     <View style={styles.container}>
@@ -60,7 +70,7 @@ export default function ProductList({filterValue}) {
         }}
         numColumns={2}
       />
-      {/* processedResponse is a constant we will use to render relevant items 
+      {/* processedResponse is a constant we use to render relevant items 
       based on the product filter and sort choices made by the user. */}
     </View>
   );

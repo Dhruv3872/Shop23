@@ -7,19 +7,18 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. In ShopScreen component:
-   1. Removed the code for Sort dropdown UI component as  
-      the API we are usiing does not provide sorting feature.
-1. Added bottom margin to ProductList component to enable  
-   showing last product(s) in the list properly.
-1. Installed Redux-saga package for enabling handling of  
-   API calls through that redux middleware, though that is  
-   just the middleware. We will need to install Redux, too.  
-   Over to next commit.
+1. Installed Redux Toolkit and React-Redux packages.
+1. Added code to update the chosen Filter on  
+   the FilterDropdown component and accordingly  
+   the ProductList component using Redux.
 
 ### Changes in mind to be introduced in future commits:
 
-1. Add Redux in this app with Redux-saga middleware(s).
+1. Extract the API calls from the ProductList component,  
+   and Add Async calls to dummyjson API using Redux-saga middleware(s).
+1. The ProductList component should be rendered from the beginning when  
+   the chosen filter value changes instead of staying at its place  
+   in the scrollable view.
 1. The ProductCard components rendered in the adjascent columns  
    are not rendered precisely side-by-side but are rather displaced.  
    Putting a border around the FastImage component shows it clearly.  

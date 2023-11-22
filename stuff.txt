@@ -9,11 +9,6 @@ Navigation:
             Favourites: heart-outline, heart
             Profile: person-circle-outline, person-circle
 Shop:
-    Sort:
-        Price: Low to High
-        Price: High to Low
-        Avg. Customer Review
-        Best discount
     Filter:
         Filter by catagory:
             smartphones
@@ -36,11 +31,3 @@ Shop:
             automotive
             motorcycle
             lighting
-        may be in future:
-            Under $500
-            $500 - $1000
-            > $1000
-            Discount > 10%
-            Discount > 15%
-            Rating > 4.5        
-            Rating > 4

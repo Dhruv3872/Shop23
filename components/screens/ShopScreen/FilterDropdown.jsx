@@ -3,6 +3,10 @@ filtering their product list view based on the product category. */
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 
+//Redux:
+import {useSelector, useDispatch} from 'react-redux';
+import {setFilterValue, selectFilter} from '../../../src/features/filterSlice';
+
 //third-party:
 import {Dropdown} from 'react-native-element-dropdown';
 
@@ -30,21 +34,16 @@ const data = [
   {label: 'Automotive', value: 'automotive'},
   {label: 'Motorcycle', value: 'motorcycle'},
   {label: 'Lighting', value: 'lighting'},
-
-  /* {label: 'Under $500', value: '<500'},
-  {label: '$500 - $1000', value: '500-1000'},
-  {label: '> $1000', value: '>1000'},
-  {label: 'Discount > 10%', value: 'd>10'},
-  {label: 'Discount > 15%', value: 'd>15'},
-  {label: 'Rating > 4.5', value: 'r>4.5'},
-  {label: 'Rating > 4', value: 'r>4'}, */
 ];
 
-export default function FilterDropdown({passFilterValue}) {
-  const [value, setValue] = useState(null);
+export default function FilterDropdown() {
   const [isFocus, setIsFocus] = useState(false);
+  //Redux:
+  const filterValue = useSelector(selectFilter);
+  const dispatch = useDispatch();
+
   const renderLabel = () => {
-    if (value || isFocus) {
+    if (filterValue || isFocus) {
       return (
         <Text style={[styles.label, isFocus && {color: 'blue'}]}>
           Filter by category
@@ -68,14 +67,13 @@ export default function FilterDropdown({passFilterValue}) {
         valueField="value"
         placeholder={!isFocus ? 'Choose a category' : '...'}
         searchPlaceholder="Search..."
-        value={value}
+        value={filterValue}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={item => {
-          setValue(item.value);
-          // console.log('value at filterdd: ' + value);
-          passFilterValue(item.value);
           setIsFocus(false);
+          //Redux:
+          dispatch(setFilterValue(item.value));
         }}
         renderLeftIcon={() => (
           <Ionicons
