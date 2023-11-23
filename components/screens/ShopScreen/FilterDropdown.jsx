@@ -6,6 +6,7 @@ import React, {useState} from 'react';
 //Redux:
 import {useSelector, useDispatch} from 'react-redux';
 import {setFilterValue, selectFilter} from '../../../src/features/filterSlice';
+import {productsAsync} from '../../../src/features/productListSlice';
 
 //third-party:
 import {Dropdown} from 'react-native-element-dropdown';
@@ -69,11 +70,14 @@ export default function FilterDropdown() {
         searchPlaceholder="Search..."
         value={filterValue}
         onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onBlur={() => {
+          setIsFocus(false);
+        }}
         onChange={item => {
           setIsFocus(false);
           //Redux:
           dispatch(setFilterValue(item.value));
+          dispatch(productsAsync({filterValue: item.value}));
         }}
         renderLeftIcon={() => (
           <Ionicons

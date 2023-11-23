@@ -7,15 +7,14 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. Installed Redux Toolkit and React-Redux packages.
-1. Added code to update the chosen Filter on  
-   the FilterDropdown component and accordingly  
-   the ProductList component using Redux.
+1. Extracted the API calls from the ProductList component,  
+   and Added Async calls to dummyjson API using the default  
+   Redux-thunk middleware's createAsyncThunk package offered  
+   by the Redux Toolkit.
 
 ### Changes in mind to be introduced in future commits:
 
-1. Extract the API calls from the ProductList component,  
-   and Add Async calls to dummyjson API using Redux-saga middleware(s).
+1. Change from Redux-thunk middleware to Redux-saga.
 1. The ProductList component should be rendered from the beginning when  
    the chosen filter value changes instead of staying at its place  
    in the scrollable view.

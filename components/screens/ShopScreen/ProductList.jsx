@@ -1,63 +1,32 @@
 import {StyleSheet, View, FlatList} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import ProductCard from './ProductCard';
 
-import axios from 'axios';
-
 //Redux:
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {selectFilter} from '../../../src/features/filterSlice';
+import {
+  selectProducts,
+  productsAsync,
+} from '../../../src/features/productListSlice';
 
 export default function ProductList() {
-  const [processedResponse, setProcessedResponse] = useState([]);
   //Redux:
+  const dispatch = useDispatch();
   const filterValue = useSelector(selectFilter);
-  let uri = 'https://dummyjson.com/products/?limit=0';
+  const products = useSelector(selectProducts);
   if (filterValue === null) {
-    if (processedResponse.length === 0) {
-      // This is true when the user arrives on ShopScreen screen afresh.
-      axios
-        .get(uri)
-        .then(function (response) {
-          if (processedResponse != response['data']['products']) {
-            setProcessedResponse(response['data']['products']);
-          }
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function () {
-          // always executed
-        });
-    }
-  } else {
-    if (processedResponse[0]['category'] != filterValue) {
-      /*This condition has to be checked to avoid sending the same request
-    over and over again. */
-      uri =
-        'https://dummyjson.com/products/category/' + filterValue + '/?limit=0';
-      axios
-        .get(uri)
-        .then(function (response) {
-          if (processedResponse != response['data']['products']) {
-            setProcessedResponse(response['data']['products']);
-          }
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function () {
-          // always executed
-        });
+    if (products.length === 0) {
+      dispatch(productsAsync({filterValue: filterValue}));
     }
   }
+  /*In case where filterValue !== null, the FilterDropdown component's 
+  onChange prop is responsible for dispatching the productsAsync action. */
   return (
     <View style={styles.container}>
       <FlatList
         columnWrapperStyle={styles.productList}
-        data={processedResponse}
+        data={products}
         renderItem={product => {
           return (
             <ProductCard
@@ -70,8 +39,8 @@ export default function ProductList() {
         }}
         numColumns={2}
       />
-      {/* processedResponse is a constant we use to render relevant items 
-      based on the product filter and sort choices made by the user. */}
+      {/* products is a constant we use to render relevant items
+      based on the product filter choice made by the user. */}
     </View>
   );
 }
