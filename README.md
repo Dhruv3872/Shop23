@@ -7,14 +7,12 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. Extracted the API calls from the ProductList component,  
-   and Added Async calls to dummyjson API using the default  
-   Redux-thunk middleware's createAsyncThunk package offered  
-   by the Redux Toolkit.
+1. Removed redundant useState code from ShopScreen component.
+1. Used Redux-Saga instead of Redux Thunk to make the API calls.
 
 ### Changes in mind to be introduced in future commits:
 
-1. Change from Redux-thunk middleware to Redux-saga.
+1. Add Google Analytics to the app to record various actions performed by users.
 1. The ProductList component should be rendered from the beginning when  
    the chosen filter value changes instead of staying at its place  
    in the scrollable view.

@@ -5,10 +5,7 @@ import ProductCard from './ProductCard';
 //Redux:
 import {useSelector, useDispatch} from 'react-redux';
 import {selectFilter} from '../../../src/features/filterSlice';
-import {
-  selectProducts,
-  productsAsync,
-} from '../../../src/features/productListSlice';
+import {selectProducts} from '../../../src/features/productListSlice';
 
 export default function ProductList() {
   //Redux:
@@ -17,9 +14,13 @@ export default function ProductList() {
   const products = useSelector(selectProducts);
   if (filterValue === null) {
     if (products.length === 0) {
-      dispatch(productsAsync({filterValue: filterValue}));
+      dispatch({
+        type: 'PRODUCTS_FETCH_REQUESTED',
+        payload: {filterValue: filterValue},
+      });
     }
   }
+  console.log(products);
   /*In case where filterValue !== null, the FilterDropdown component's 
   onChange prop is responsible for dispatching the productsAsync action. */
   return (
@@ -39,7 +40,7 @@ export default function ProductList() {
         }}
         numColumns={2}
       />
-      {/* products is a constant we use to render relevant items
+      {/* products is a constant we use in this component to render relevant items
       based on the product filter choice made by the user. */}
     </View>
   );
