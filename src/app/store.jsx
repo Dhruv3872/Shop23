@@ -3,6 +3,7 @@ import {configureStore} from '@reduxjs/toolkit';
 //reducers:
 import filterReducer from '../features/filterSlice';
 import productsReducer from '../features/productListSlice';
+import productDetailsReducer from '../features/productDetailsSlice';
 //Redux-Saga:
 import createSagaMiddleware from 'redux-saga';
 import mySaga from './sagas';
@@ -14,6 +15,7 @@ export const store = configureStore({
   reducer: {
     filter: filterReducer,
     products: productsReducer,
+    productDetails: productDetailsReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(sagaMiddleware),

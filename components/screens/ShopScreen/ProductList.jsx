@@ -20,7 +20,6 @@ export default function ProductList() {
       });
     }
   }
-  console.log(products);
   /*In case where filterValue !== null, the FilterDropdown component's 
   onChange prop is responsible for dispatching the productsAsync action. */
   return (

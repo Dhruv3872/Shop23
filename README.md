@@ -7,8 +7,10 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. Removed redundant useState code from ShopScreen component.
-1. Used Redux-Saga instead of Redux Thunk to make the API calls.
+1. Added 'ProductDetails' component to render a detailed view of the product  
+   when a user clicks on any of the product cards.
+1. Integrated newly created Firebase project 'Shop23' with this React Native project  
+   using third-party package [react-native-firebase](https://rnfirebase.io/).
 
 ### Changes in mind to be introduced in future commits:
 
