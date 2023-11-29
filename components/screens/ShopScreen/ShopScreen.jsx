@@ -17,8 +17,9 @@ import ProductDetails from './ProductDetails';
 export default function ShopScreen() {
   const dispatch = useDispatch();
   const details = useSelector(selectProductDetails);
-  let showModal = details.showProductDetails;
-  console.log(showModal);
+  /* The details object's keys method's output array's
+  length will not be 0, but 11 when a product is clicked. */
+  let showModal = Object.keys(details).length !== 0;
   return (
     <View style={styles.container}>
       <View>
@@ -31,15 +32,10 @@ export default function ShopScreen() {
       {showModal && (
         <Modal
           onRequestClose={() => {
-            dispatch(
-              setProductDetails({
-                title: '',
-                uri: '',
-                price: '',
-                discountPercentage: '',
-                showProductDetails: false,
-              }),
-            );
+            /* This resets the productDetails state to a null object.
+            This is necessary to do as we want the variable 'showModal'
+            to be false when the modal is closed. */
+            dispatch(setProductDetails({}));
           }}>
           <ProductDetails />
         </Modal>

@@ -3,7 +3,7 @@ import React from 'react';
 
 //Redux:
 import {useDispatch} from 'react-redux';
-import {setProductDetails} from '../../../src/features/productDetailsSlice';
+
 //Third-party:
 import FastImage from 'react-native-fast-image';
 
@@ -11,7 +11,15 @@ import FastImage from 'react-native-fast-image';
 import ProductInfo from './ProductInfo';
 import {Pressable} from 'react-native';
 
-export default function ProductCard({title, uri, price, discountPercentage}) {
+export default function ProductCard({
+  /* Passed product id so that we can make API call in a saga to 
+  dummyjson API using id in the uri. */
+  id,
+  title,
+  uri,
+  price,
+  discountPercentage,
+}) {
   const dispatch = useDispatch();
   return (
     <View>
@@ -19,15 +27,13 @@ export default function ProductCard({title, uri, price, discountPercentage}) {
       on it to go to the corresponding details page. */}
       <Pressable
         onPress={() => {
-          dispatch(
-            setProductDetails({
-              title: title,
-              uri: uri,
-              price: price,
-              discountPercentage: discountPercentage,
-              showProductDetails: true,
-            }),
-          );
+          /* Let us dispatch an action to the store to update the state of Prouduct Details
+           by making a GET API call with the product id.
+           */
+          dispatch({
+            type: 'PRODUCT_DETAILS_REQUESTED',
+            payload: {id: id},
+          });
         }}>
         <View style={styles.container}>
           <FastImage

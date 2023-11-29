@@ -30,6 +30,7 @@ export default function ProductList() {
         renderItem={product => {
           return (
             <ProductCard
+              id={product['item']['id']}
               title={product['item']['title']}
               uri={product['item']['thumbnail']}
               price={product['item']['price']}

@@ -7,10 +7,12 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. Added 'ProductDetails' component to render a detailed view of the product  
-   when a user clicks on any of the product cards.
-1. Integrated newly created Firebase project 'Shop23' with this React Native project  
-   using third-party package [react-native-firebase](https://rnfirebase.io/).
+1. Updated the package version to 0.0.3.
+1. Made arrangements to make a GET API call with Product id  
+   on clicking any of the Product cards.
+1. Added Google Analytics to the app to record various actions performed by users.  
+   This includes logging the selected product's category and id when a product card  
+   is clicked using Google Analytics's 'logSelectedContent method.
 
 ### Changes in mind to be introduced in future commits:
 
