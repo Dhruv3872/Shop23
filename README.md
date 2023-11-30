@@ -7,16 +7,12 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. Updated the package version to 0.0.3.
-1. Made arrangements to make a GET API call with Product id  
-   on clicking any of the Product cards.
-1. Added Google Analytics to the app to record various actions performed by users.  
-   This includes logging the selected product's category and id when a product card  
-   is clicked using Google Analytics's 'logSelectedContent method.
+1. Added Google Analytics' Screen-tracking in App.jsx  
+   using Tab Navigator's 'ScreenListeners' prop.
 
 ### Changes in mind to be introduced in future commits:
 
-1. Add Google Analytics to the app to record various actions performed by users.
+1. Add Google Crashlytics to the project.
 1. The ProductList component should be rendered from the beginning when  
    the chosen filter value changes instead of staying at its place  
    in the scrollable view.

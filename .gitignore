@@ -70,4 +70,4 @@ yarn-error.log
 # The above foler is created to keep the references related to the project handy, but it will
 # increase the app bundle size. We will need to make some other arrangement to serve the purpose.
 #Firebase integration:
-/android/app/src/debug/google-services.json
+/android/app/google-services.json

@@ -6,6 +6,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+//rnfirebase: for Google Analytics:
+import analytics from '@react-native-firebase/analytics';
+
 //custome-made components:
 //tab navigation screens:
 import HomeScreen from './components/screens/HomeScreen/HomeScreen';
@@ -41,7 +44,20 @@ function App() {
             return icon;
           },
           headerShown: false,
-        })}>
+        })}
+        //Log data in Google Analytics upon loading of a screen:
+        screenListeners={{
+          state: async e => {
+            const screenState = e.data['state'];
+            const screenIndex = screenState['index'].toString();
+            const screenName = screenState['routeNames'][screenIndex];
+            console.log(screenIndex, screenName);
+            await analytics().logScreenView({
+              screen_class: screenName,
+              screen_name: screenName,
+            });
+          },
+        }}>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Shop" component={ShopScreen} />
         <Tab.Screen name="Bag" component={BagScreen} />
