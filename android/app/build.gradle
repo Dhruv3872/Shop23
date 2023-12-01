@@ -2,6 +2,8 @@ apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 //Firebase integration:
 apply plugin: 'com.google.gms.google-services'
+//Firebase Crashlytics:
+apply plugin: 'com.google.firebase.crashlytics'
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -101,6 +103,15 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            /* Add the firebaseCrashlytics extension (by default,
+            * it's disabled to improve build speeds) and set
+            * nativeSymbolUploadEnabled to true along with a pointer to native libs. 
+            For more information, check out:
+            https://rnfirebase.io/crashlytics/android-setup#4-optional-enable-crashlytics-ndk-reporting */
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled true
+                unstrippedNativeLibsDir 'build/intermediates/merged_native_libs/release/out/lib'
+            }
         }
     }
 }

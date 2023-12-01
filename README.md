@@ -7,12 +7,10 @@ And then we will go from there.
 
 ### Changes introduced in this commit:
 
-1. Added Google Analytics' Screen-tracking in App.jsx  
-   using Tab Navigator's 'ScreenListeners' prop.
+1. Added Firebase Crashlytics to the project along with a button to do crash testing.
 
 ### Changes in mind to be introduced in future commits:
 
-1. Add Google Crashlytics to the project.
 1. The ProductList component should be rendered from the beginning when  
    the chosen filter value changes instead of staying at its place  
    in the scrollable view.
