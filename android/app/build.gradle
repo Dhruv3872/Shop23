@@ -92,6 +92,15 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        /* Refer to the 'Build instructions' section of 
+        the README file to know how to create a release apk 
+        using React Native CLI. */
+        release{
+            storeFile file('oneKeyStore.keystore')
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
     }
     buildTypes {
         debug {
@@ -100,7 +109,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             /* Add the firebaseCrashlytics extension (by default,
