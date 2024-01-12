@@ -6,11 +6,12 @@ with a filter dropdown menu.
 
 ### Changes introduced in this commit:
 
-1. Created Release build using React Native CLI for the first time.  
-   Refer to the 'Build instructions' section of thie file for details.
+1. Made some comments; removed some redundant commented code.
 
 ### Changes in mind to be introduced in future commits:
 
+1. Show a 3D scrollable product.  
+   You may temporarily use one of the bottom tabs.
 1. The ProductList component should be rendered from the beginning  
    when the chosen filter value changes instead of staying at its place  
     in the scrollable view.
